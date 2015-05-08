@@ -14,4 +14,4 @@ The following curl command can be used to test the service:
     
 This will end up calling members/v1.  Change the username/password to call members/v2.
 
-Also note that authorization is tested as well so both users must belong to the "manager" role in EAP.
+Also note that authorization is tested as well so both users must belong to the "manager" role in application-roles.properties.
