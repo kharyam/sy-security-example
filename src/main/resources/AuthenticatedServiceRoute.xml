@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="ASCII"?>
+<routes xmlns="http://camel.apache.org/schema/spring">
+  <route>
+    <from uri="switchyard://AuthenticatedService" />
+    <log message="AuthenticatedService - message received: ${body}" />
+    <log message="AuthenticatedService - authenticated username: ${header.username}" />
+    <choice>
+      <when>
+        <simple>${header.username} == "fswAdmin"</simple>
+        <to uri="switchyard://MembersV1" />
+      </when>
+      <otherwise>
+        <to uri="switchyard://MembersV2"/>
+      </otherwise>
+    </choice>
+  </route>
+</routes>
