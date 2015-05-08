@@ -8,30 +8,20 @@
       <sca:service name="AuthenticatedService" requires="clientAuthentication">
         <sca:interface.java interface="com.example.switchyard.sy_authentication.AuthenticatedService"/>
       </sca:service>
-      <sca:reference name="MembersV1">
-        <sca:interface.java interface="com.example.switchyard.sy_authentication.MembersV1"/>
-      </sca:reference>
-      <sca:reference name="MembersV2">
-        <sca:interface.java interface="com.example.switchyard.sy_authentication.MembersV2"/>
+      <sca:reference name="Members">
+        <sca:interface.java interface="com.example.switchyard.sy_authentication.Members"/>
       </sca:reference>
     </sca:component>
     <sca:service name="AuthenticatedService" promote="AuthenticatedService/AuthenticatedService">
       <sca:interface.java interface="com.example.switchyard.sy_authentication.AuthenticatedService"/>
       <resteasy:binding.rest name="rest1">
-        <resteasy:contextMapper class="com.example.switchyard.sy_authentication.SecuriyContextMapper"/>
+        <resteasy:contextMapper class="com.example.switchyard.sy_authentication.SecurityContextMapper"/>
         <resteasy:interfaces>com.example.switchyard.rest.AuthenticatedServiceResource</resteasy:interfaces>
         <resteasy:contextPath>service</resteasy:contextPath>
       </resteasy:binding.rest>
     </sca:service>
-    <sca:reference name="MembersV1" multiplicity="0..1" promote="AuthenticatedService/MembersV1">
-      <sca:interface.java interface="com.example.switchyard.sy_authentication.MembersV1"/>
-      <resteasy:binding.rest name="rest1">
-        <resteasy:interfaces>com.example.switchyard.rest.MembersServiceResource</resteasy:interfaces>
-        <resteasy:address>http://localhost:8080/members</resteasy:address>
-      </resteasy:binding.rest>
-    </sca:reference>
-    <sca:reference name="MembersV2" multiplicity="0..1" promote="AuthenticatedService/MembersV2">
-      <sca:interface.java interface="com.example.switchyard.sy_authentication.MembersV2"/>
+    <sca:reference name="Members" multiplicity="0..1" promote="AuthenticatedService/Members">
+      <sca:interface.java interface="com.example.switchyard.sy_authentication.Members"/>
       <resteasy:binding.rest name="rest1">
         <resteasy:interfaces>com.example.switchyard.rest.MembersServiceResource</resteasy:interfaces>
         <resteasy:address>http://localhost:8080/members</resteasy:address>

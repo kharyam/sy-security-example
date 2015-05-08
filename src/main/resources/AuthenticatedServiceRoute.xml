@@ -7,10 +7,10 @@
     <choice>
       <when>
         <simple>${header.username} == "fswAdmin"</simple>
-        <to uri="switchyard://MembersV1" />
+        <to uri="switchyard://Members?operationName=callMembersV1" />
       </when>
       <otherwise>
-        <to uri="switchyard://MembersV2"/>
+        <to uri="switchyard://Members?operationName=callMembersV2"/>
       </otherwise>
     </choice>
   </route>
